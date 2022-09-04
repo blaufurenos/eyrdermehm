@@ -33,5 +33,5 @@ services:
       - "$PWD/caddy/Caddyfile:/etc/caddy/Caddyfile"
       - $PWD/html:/var/www/html
       - tls-data:/data/caddy/certificates/acme-v02.api.letsencrypt.org-directory/${DOMAINNAME}
-  volumes:
-    - tls-data
+volumes:
+  - tls-data
