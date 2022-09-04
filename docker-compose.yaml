@@ -31,5 +31,5 @@ services:
     command: caddy file-server --domain ${DOMAINNAME}
     volumes:
       - "./caddy/Caddyfile:/etc/caddy/Caddyfile"
-      - ./html:/var/www/html"
+      - ./html:/var/www/html
       - ./ssl:/data/caddy/certificates/acme-v02.api.letsencrypt.org-directory
