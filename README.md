@@ -1,6 +1,9 @@
 # trojan
 A Trojan service based on dockerize.
 
+## Clone this repository.
+    git clone https://github.com/sscaifesu/trojan $HOME/trojan
+
 ## Build trojan image with single platform.
     docker build -t <imageName>:<TAG> -f trojan.Dockerfile .
 
