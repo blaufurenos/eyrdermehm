@@ -5,12 +5,12 @@
     "remote_addr": "__DOCKER_CADDY__",
     "remote_port": 80,
     "password": [
-        "$UUID"
+        "${UUID}"
     ],
     "log_level": 1,
     "ssl": {
-        "cert": "/ssl/$DOMAINNAME/$DOMAINNAME.crt",
-        "key": "/ssl/$DOMAINNAME/$DOMAINNAME.key",
+        "cert": "/ssl/${DOMAINNAME}/${DOMAINNAME}.crt",
+        "key": "/ssl/${DOMAINNAME}/${DOMAINNAME}.key",
         "key_password": "",
         "cipher_tls13":"TLS_AES_128_GCM_SHA256:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_256_GCM_SHA384",
         "prefer_server_cipher": true,
