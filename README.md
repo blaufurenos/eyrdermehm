@@ -1,13 +1,13 @@
 # trojan
-A Trojan Service Base on Dockerize.
+A Trojan service based on dockerize.
 
-## Build Trojan image with single platform.
-    docker build -t <imageName>:<TAG> -f trojan.dockerfile .
+## Build trojan image with single platform.
+    docker build -t <imageName>:<TAG> -f trojan.Dockerfile .
 
-## Build Trojan image multi platform.
+## Build trojan image multi platform(for example:linux/arm64,linux/amd64).
     docker buildx build -t <imageName>:<TAG> \
         --platform=linux/arm64,linux/amd64 . \
-        -f Dockerfile \
+        -f trojan.Dockerfile \
         --push
 
 ## Test runing a container inspect.
