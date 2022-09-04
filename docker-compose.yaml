@@ -14,7 +14,7 @@ services:
     volumes:
       - "$PWD/trojan/config/config.json:/config/config.json"
       - "$PWD/trojan/wait_for_caddy.sh:/wait_for_caddy.sh"
-      - $PWD/ssl:/ssl
+      - tls-data:/ssl
     links:
       - caddy:__DOCKER_CADDY__
     depends_on:
@@ -32,4 +32,6 @@ services:
     volumes:
       - "$PWD/caddy/Caddyfile:/etc/caddy/Caddyfile"
       - $PWD/html:/var/www/html
-      - $PWD/ssl:/data/caddy/certificates/acme-v02.api.letsencrypt.org-directory
+      - tls-data:/data/caddy/certificates/acme-v02.api.letsencrypt.org-directory/${DOMAINNAME}
+  volumes:
+    - tls-data
