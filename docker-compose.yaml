@@ -2,7 +2,7 @@ version: 3.7
 
 services:
   trojan:
-    image: ${TROJAB_IMAGE}
+    image: ${TROJAN_IMAGE}
     restart: unless-stopped
     ports:
       - ${HTTPS_PORT}:443
