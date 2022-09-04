@@ -1,0 +1,11 @@
+${DOMAINNAME}:80 {
+    root /var/www/html
+    log /var/log/${DOMAINNAME}.log
+    index index.html
+}
+
+${DOMAINNAME}:443 {
+    root /var/www/html
+    log /var/log/${DOMAINNAME}.log
+    index index.html
+}

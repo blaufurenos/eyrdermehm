@@ -1,0 +1,34 @@
+version: 3.7
+
+services:
+  trojan:
+    image: ${TROJAB_IMAGE}
+    restart: unless-stopped
+    ports:
+      - ${HTTPS_PORT}:443
+      - ${HTTPS_PORT}:443/udp
+    environment:
+      - UUID=${UUID}
+      - DOMAINNAME=${DOMAINNAME}
+    volumes:
+      - $PWD/trojan/config/config.json:/config/config.json
+      - $PWD/trojan/wait_for_caddy.sh:/wait_for_caddy.sh
+      - $PWD/ssl:/ssl
+    links:
+      - caddy:__DOCKER_CADDY__
+    depends_on:
+      - caddy
+
+  caddy:
+    image: ${CADDY_IMAGE}
+    restart: unless-stopped
+    ports:
+      - ${HTTP_PORT}:80
+    environment:
+      - DOMAINNAME=${DOMAINNAME}
+    command: caddy file-server --domain ${DOMAINNAME}
+    volumes:
+      - $PWD/caddy/Caddyfile:/etc/caddy/Caddyfile
+      - $PWD/html:/var/www/html
+      - $PWD/ssl:/data/caddy/certificates/acme-v02.api.letsencrypt.org-directory
+      # - $PWD/caddy/config:/config/caddy
