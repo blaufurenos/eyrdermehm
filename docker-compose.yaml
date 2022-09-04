@@ -6,8 +6,8 @@ services:
     container_name: trojan
     restart: unless-stopped
     ports:
-      - "${HTTPS_PORT}:443"
-      - "${HTTPS_PORT}:443/udp"
+      - "443:443"
+      - "443:443/udp"
     environment:
       - UUID=${UUID}
       - DOMAINNAME=${DOMAINNAME}
@@ -25,7 +25,7 @@ services:
     container_name: caddy
     restart: unless-stopped
     ports:
-      - "${HTTP_PORT}:80"
+      - "80:80"
     environment:
       - DOMAINNAME=${DOMAINNAME}
     command: caddy file-server --domain ${DOMAINNAME}
