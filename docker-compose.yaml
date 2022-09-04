@@ -12,9 +12,9 @@ services:
       - UUID=${UUID}
       - DOMAINNAME=${DOMAINNAME}
     volumes:
-      - "./trojan/config/config.json:/config/config.json"
-      - "./trojan/wait_for_caddy.sh:/wait_for_caddy.sh"
-      - ./ssl:/ssl
+      - "$PWD/trojan/config/config.json:/config/config.json"
+      - "$PWD/trojan/wait_for_caddy.sh:/wait_for_caddy.sh"
+      - $PWD/ssl:/ssl
     links:
       - caddy:__DOCKER_CADDY__
     depends_on:
@@ -30,6 +30,6 @@ services:
       - DOMAINNAME=${DOMAINNAME}
     command: caddy file-server --domain ${DOMAINNAME}
     volumes:
-      - "./caddy/Caddyfile:/etc/caddy/Caddyfile"
-      - ./html:/var/www/html
-      - ./ssl:/data/caddy/certificates/acme-v02.api.letsencrypt.org-directory
+      - "$PWD/caddy/Caddyfile:/etc/caddy/Caddyfile"
+      - $PWD/html:/var/www/html
+      - $PWD/ssl:/data/caddy/certificates/acme-v02.api.letsencrypt.org-directory
