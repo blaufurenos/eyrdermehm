@@ -21,4 +21,4 @@ RUN apk add --no-cache --virtual .build-deps \
         mariadb-connector-c
 
 WORKDIR /config
-CMD ["/bin/sh", "/config/wait_for_caddy.sh", "trojan", "/config/config.json"]
+CMD ["/bin/sh", "./config/wait_for_caddy.sh", "trojan", "./config/config.json"]
